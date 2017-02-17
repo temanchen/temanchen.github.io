@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linear Regression | Tianwen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.Problem
+Given a feature vector \(x\), predict a continuous value \(y\)
+2.Hypothesis
+\(h_{\theta}(x) = \theta^{T}x\)
+Note for each input \(x\), we add a biased term \(x_0=1\) for convenience.
+3.Cost">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Regression">
+<meta property="og:url" content="http://yoursite.com/2017/02/03/linear_regression/index.html">
+<meta property="og:site_name" content="Tianwen's blog">
+<meta property="og:description" content="1.Problem
+Given a feature vector \(x\), predict a continuous value \(y\)
+2.Hypothesis
+\(h_{\theta}(x) = \theta^{T}x\)
+Note for each input \(x\), we add a biased term \(x_0=1\) for convenience.
+3.Cost">
+<meta property="og:updated_time" content="2017-02-14T13:46:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linear Regression">
+<meta name="twitter:description" content="1.Problem
+Given a feature vector \(x\), predict a continuous value \(y\)
+2.Hypothesis
+\(h_{\theta}(x) = \theta^{T}x\)
+Note for each input \(x\), we add a biased term \(x_0=1\) for convenience.
+3.Cost">
+  
+    <link rel="alternate" href="/atom.xml" title="Tianwen&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Tianwen&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-linear_regression" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/03/linear_regression/" class="article-date">
+  <time datetime="2017-02-03T09:45:01.000Z" itemprop="datePublished">2017-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linear Regression
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="problem">1.Problem</h3>
+<p>Given a feature vector <span class="math inline">\(x\)</span>, predict a continuous value <span class="math inline">\(y\)</span></p>
+<h3 id="hypothesis">2.Hypothesis</h3>
+<p><span class="math inline">\(h_{\theta}(x) = \theta^{T}x\)</span><br>
+Note for each input <span class="math inline">\(x\)</span>, we add a biased term <span class="math inline">\(x_0=1\)</span> for convenience.</p>
+<h3 id="cost-function">3.Cost function</h3>
+<p><span class="math display">\[
+\begin{align}
+J_{\theta}(X) &amp;= \dfrac {1} {2m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 \\
+&amp;= \dfrac {1} {2m} \sum_{i=1}^m (\theta^{T}x^{(i)} - y^{(i)})^2
+\end{align} \\
+\text{where $(x^{(i)}, y^{(i)})$ is the $i^{th}$ training example.}
+\]</span></p>
+<h5 id="vectorized-form">Vectorized form:</h5>
+<p><span class="math display">\[
+J_{\theta}(X) = \dfrac {1} {2m} (X\theta - y)^T(X\theta - y) \\
+\text{where } X = \begin{pmatrix}
+-x^{(1)^T}- \\
+-x^{(2)^T}- \\
+\vdots \\
+-x^{(m)^T}-
+\end{pmatrix}
+\text{, } y = \begin{pmatrix}
+y^{(1)} \\ y^{(2)} \\ \vdots \\ y^{(m)}
+\end{pmatrix}
+\]</span></p>
+<h3 id="gradient">4.Gradient</h3>
+<p><span class="math display">\[
+\begin{align}
+\frac {\partial J_{\theta}(X)} {\partial \theta_j}
+&amp;= \frac {1} {m} \sum_{i=1}^m(\theta^{T}x^{(i)} - y^{(i)})x_j^{(i)} \\
+\frac {\partial J_{\theta}(X)} {\partial \theta} &amp;= \frac {1} {m} X^T(X\theta - y)
+\end{align}
+\]</span></p>
+<h3 id="analytic-solution">5.Analytic solution</h3>
+<p><span class="math display">\[
+\leqalignno{
+{\partial J_{\theta}(X)} \over {\partial \theta} &amp;= 0 \cr
+{1 \over m} X^T(X\theta - y) &amp;= 0 &amp;\Leftrightarrow \cr
+\theta &amp;= (X^TX)^{-1}X^Ty &amp;\Leftrightarrow \cr
+}
+\]</span> Note that if <span class="math inline">\(m \lt n\)</span> or there are some redundant features, then <span class="math inline">\(X^T X\)</span> is singular (non-invertible).<br>
+##### Proof:<br>
+First let’s define what is a redundant feature.<br>
+Left <span class="math inline">\(x_i\)</span> be a <span class="math inline">\(m \times 1\)</span> vector representing the <span class="math inline">\(i^{th}\)</span> feature. If <span class="math inline">\(x_i\)</span> is a linear combination of other features, then <span class="math inline">\(x_i\)</span> is a redundant feature.<br>
+If <span class="math inline">\(m \lt n\)</span>, since <span class="math inline">\(x_i \in R^m\)</span>, and there are <span class="math inline">\(n \gt m\)</span> of them, there must be some redundant features.<br>
+If there are some redundant features, use <strong><em>outer product expansion</em></strong> to expand <span class="math inline">\(X^T X\)</span> (let <span class="math inline">\(X = \begin{pmatrix} x_1 &amp; x_2 &amp; \ldots &amp; x_n \end{pmatrix}\)</span>). It is then easy to show that some row of <span class="math inline">\(X^TX\)</span> is a linear combination of other rows of <span class="math inline">\(X^T X,\)</span> which means <span class="math inline">\(X^T X\)</span> is singular.</p>
+<h3 id="python-implementation">6.Python implementation</h3>
+<p><a href="">Linear Regression Notebook</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/03/linear_regression/" data-id="ciz5ka4wv000111phuqsak4qv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/08/softmax-regression/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Softmax Regression
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinational-Optimization/">Combinational Optimization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Combinational-Optimization/" style="font-size: 10px;">Combinational Optimization</a> <a href="/tags/Logistic-Regression/" style="font-size: 10px;">Logistic Regression</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/02/14/Traveling-Salesman-Problem/">Traveling Salesman Problem</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/08/softmax-regression/">Softmax Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/03/linear_regression/">Linear Regression</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tianwen CHEN<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  "HTML-CSS": {
+    styles: { ".MathJax_Display": { "overflow": "auto", "overflow-y": "hidden" } }
+  },
+  displayAlign: "left"
+});
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  </div>
+</body>
+</html>

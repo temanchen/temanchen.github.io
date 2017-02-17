@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Softmax Regression | Tianwen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="What is Softmax Regression
+Softmax regression is a generalization of logistic regression. It is used for multi-class classification under the assumption that the classes are independent. For each exam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Softmax Regression">
+<meta property="og:url" content="http://yoursite.com/2017/02/08/softmax-regression/index.html">
+<meta property="og:site_name" content="Tianwen's blog">
+<meta property="og:description" content="What is Softmax Regression
+Softmax regression is a generalization of logistic regression. It is used for multi-class classification under the assumption that the classes are independent. For each exam">
+<meta property="og:updated_time" content="2017-02-14T13:46:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Softmax Regression">
+<meta name="twitter:description" content="What is Softmax Regression
+Softmax regression is a generalization of logistic regression. It is used for multi-class classification under the assumption that the classes are independent. For each exam">
+  
+    <link rel="alternate" href="/atom.xml" title="Tianwen&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Tianwen&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-softmax-regression" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/08/softmax-regression/" class="article-date">
+  <time datetime="2017-02-08T06:48:08.000Z" itemprop="datePublished">2017-02-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Softmax Regression
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="what-is-softmax-regression">What is Softmax Regression</h3>
+<p>Softmax regression is a generalization of logistic regression. It is used for <strong>multi-class classification</strong> under the assumption that the classes are <strong>independent</strong>. For each example <span class="math inline">\((x^{(i)},y^{(i)}),\,y^{(i)} \in \{1, 2, ..., K\}\)</span>, the model estimates <span class="math inline">\(p(y^{(i)}=k|x^{(i)},\theta)\)</span>.</p>
+<h3 id="hypothesis">Hypothesis</h3>
+<p><span class="math display">\[
+h_{\theta}(x^{(i)})
+= \begin{pmatrix}
+p(y^{(i)}=1|x^{(i)},\theta) \\
+p(y^{(i)}=2|x^{(i)},\theta) \\
+\vdots \\
+p(y^{(i)}=K|x^{(i)},\theta)
+\end{pmatrix}
+= \frac {1} {\sum_{k=1}^K e^{\theta_k^T x^{(i)}}}
+\begin{pmatrix}
+e^{\theta_1^T x^{(i)}} \\
+e^{\theta_2^T x^{(i)}} \\
+\vdots \\
+e^{\theta_K^T x^{(i)}}
+\end{pmatrix}
+\]</span></p>
+<h3 id="loss-function">Loss Function</h3>
+<h5 id="entropy-loss-function">Entropy loss function</h5>
+<p><span class="math display">\[
+\begin{align}
+J_{\theta}(X) &amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{\{y^{(i)}=k\}} \log p(y^{(i)}=k|x^{(i)},\theta) \\
+&amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{\{y^{(i)}=k\}} \log \frac  {e^{\theta_k^T x^{(i)}}} {\sum_{l=1}^{K} e^{\theta_l^T x^{(i)}}}
+\end{align}
+\]</span></p>
+<h3 id="gradient-of-loss-function">Gradient of loss function</h3>
+<p><span class="math display">\[
+\begin{align}
+\text{Since }
+J_{\theta}(X) &amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{\{y^{(i)}=k\}} \log \frac {e^{\theta_k^T x^{(i)}}} {\sum_{l=1}^{K} e^{\theta_l^T x^{(i)}}} \\
+&amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{\{y^{(i)}=k\}} \left[ \theta_k^T x^{(i)} - \log {\sum_{l=1}^{K} e^{\theta_l^T x^{(i)}}} \right]
+\end{align}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+\frac {\partial J_{\theta}(X)} {\partial \theta_{st}} &amp;=
+- \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{y^{(i)}=k} \left[ 1_{y^{(i)}=a}x_b^{(i)} - \frac {e^{\theta_a^T x^{(i)}}} {\sum_{l=1}^{K} e^{\theta_l^T x^{(i)}}} x_b{(i)} \right]
+&amp;&amp; \text{($1_{y^{(i)}=a}x_b^{(i)}$ because the term $\theta_k^T x^{(i)}$ contributes to the gradient only when $k=a$)} \\
+&amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{y^{(i)}=k} x_b^{(i)} \left[ 1_{y^{(i)}=a} - \frac {e^{\theta_a^T x^{(i)}}} {\sum_{l=1}^{K} e^{\theta_l^T x^{(i)}}} \right]
+&amp;&amp; \text{(take out the common factor $x_b^{(i)}$)} \\
+&amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{y^{(i)}=k} x_b^{(i)} \left[ 1_{y^{(i)}=a} - p(y^{(i)}=a|x^{(i)},\theta) \right] \\
+&amp;= - \frac {1} {m} \sum_{i=1}^{m} x_b^{(i)} \left[ 1_{y^{(i)}=a} - p(y^{(i)}=a|x^{(i)},\theta) \right]
+&amp;&amp; \text{(the indicator $1_{\{y{i}=k\}}=1$ for exactly once)} \\
+\end{align} \\
+\text{Vectorized form and change a to k: }
+\frac {\partial J_{\theta(X)}} {\partial \theta_{k}} =
+- \frac {1} {m} \sum_{i=1}^{m} x^{(i)} \left[ 1_{y^{(i)}=k} - p(y^{(i)}=k|x^{(i)},\theta) \right]
+\]</span></p>
+<h3 id="property-of-softmax-regression-model-over-parameterization">Property of softmax regression model: over-parameterization</h3>
+<p><span class="math display">\[
+\text{Value of $h_{\theta}(x^{(i)})$ remains unchanged when we subtract any constant vector $\theta_0$ from all $\theta_k$} \\
+\begin{align}
+\frac {1} {\sum_{k=1}^K e^{(\theta_k - \theta_0)^T x^{(i)}}}
+\begin{pmatrix}
+e^{(\theta_1 - \theta_0)^T x^{(i)}} \\
+e^{(\theta_2 - \theta_0)^T x^{(i)}} \\
+\vdots \\
+e^{(\theta_K - \theta_0)^T x^{(i)}}
+\end{pmatrix}
+&amp;= \frac {1} {\sum_{k=1}^K e^{\theta_k^T x^{(i)}}}
+\begin{pmatrix}
+e^{\theta_1^T x^{(i)}} \\
+e^{\theta_2^T x^{(i)}} \\
+\vdots \\
+e^{\theta_K^T x^{(i)}}
+\end{pmatrix}
+\end{align}
+\]</span></p>
+<h3 id="relation-with-logistic-regression">Relation with logistic regression</h3>
+<h5 id="proof-of-logistic-regression-loss-function-and-gradient">Proof of logistic regression loss function and gradient</h5>
+<p>Use softmax regression when classes are mutually exclusive.<br>
+Use <span class="math inline">\(K\)</span> one-vs-all logistic regression models when classes are not mutually exclusive.</p>
+<h3 id="to-do">To do</h3>
+<p>The loss function and gradient when <span class="math display">\[
+y^{(i)} \in Y = \left\{
+\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix},
+\begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix},
+\ldots,
+\begin{pmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}
+\right\}. \text{ Each matrix in Y is of length K}
+\]</span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/08/softmax-regression/" data-id="ciz5ka4x2000311phd7hk38yy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/14/Traveling-Salesman-Problem/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Traveling Salesman Problem
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/03/linear_regression/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linear Regression</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinational-Optimization/">Combinational Optimization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Combinational-Optimization/" style="font-size: 10px;">Combinational Optimization</a> <a href="/tags/Logistic-Regression/" style="font-size: 10px;">Logistic Regression</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/02/14/Traveling-Salesman-Problem/">Traveling Salesman Problem</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/08/softmax-regression/">Softmax Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/03/linear_regression/">Linear Regression</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tianwen CHEN<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  "HTML-CSS": {
+    styles: { ".MathJax_Display": { "overflow": "auto", "overflow-y": "hidden" } }
+  },
+  displayAlign: "left"
+});
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  </div>
+</body>
+</html>
