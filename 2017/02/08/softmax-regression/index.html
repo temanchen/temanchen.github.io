@@ -13,7 +13,7 @@ Softmax regression is a generalization of logistic regression. It is used for mu
 <meta property="og:site_name" content="Tianwen's blog">
 <meta property="og:description" content="What is Softmax Regression
 Softmax regression is a generalization of logistic regression. It is used for multi-class classification under the assumption that the classes are independent. For each exam">
-<meta property="og:updated_time" content="2017-02-14T13:46:56.000Z">
+<meta property="og:updated_time" content="2017-02-21T07:55:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Softmax Regression">
 <meta name="twitter:description" content="What is Softmax Regression
@@ -125,18 +125,18 @@ J_{\theta}(X) &amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{\{y^{(i)}=
 \]</span></p>
 <p><span class="math display">\[
 \begin{align}
-\frac {\partial J_{\theta}(X)} {\partial \theta_{st}} &amp;=
-- \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{y^{(i)}=k} \left[ 1_{y^{(i)}=a}x_b^{(i)} - \frac {e^{\theta_a^T x^{(i)}}} {\sum_{l=1}^{K} e^{\theta_l^T x^{(i)}}} x_b{(i)} \right]
-&amp;&amp; \text{($1_{y^{(i)}=a}x_b^{(i)}$ because the term $\theta_k^T x^{(i)}$ contributes to the gradient only when $k=a$)} \\
-&amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{y^{(i)}=k} x_b^{(i)} \left[ 1_{y^{(i)}=a} - \frac {e^{\theta_a^T x^{(i)}}} {\sum_{l=1}^{K} e^{\theta_l^T x^{(i)}}} \right]
+\frac {\partial J_{\theta}(X)} {\partial \theta_{ab}} &amp;=
+- \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{\{y^{(i)}=k\}} \left[ 1_{\{y^{(i)}=a\}} x_b^{(i)} - \frac {e^{\theta_a^T x^{(i)}}} {\sum_{l=1}^{K} e^{\theta_l^T x^{(i)}}} x_b{(i)} \right]
+&amp;&amp; \text{($1_{\{y^{(i)}=a\}}x_b^{(i)}$ because the term $\theta_k^T x^{(i)}$ contributes to the gradient only when $k=a$)} \\
+&amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{\}y^{(i)}=k\}} x_b^{(i)} \left[ 1_{\{y^{(i)}=a\}} - \frac {e^{\theta_a^T x^{(i)}}} {\sum_{l=1}^{K} e^{\theta_l^T x^{(i)}}} \right]
 &amp;&amp; \text{(take out the common factor $x_b^{(i)}$)} \\
-&amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{y^{(i)}=k} x_b^{(i)} \left[ 1_{y^{(i)}=a} - p(y^{(i)}=a|x^{(i)},\theta) \right] \\
-&amp;= - \frac {1} {m} \sum_{i=1}^{m} x_b^{(i)} \left[ 1_{y^{(i)}=a} - p(y^{(i)}=a|x^{(i)},\theta) \right]
+&amp;= - \frac {1} {m} \sum_{i=1}^{m} \sum_{k=1}^{K} 1_{\{y^{(i)}=k\}} x_b^{(i)} \left[ 1_{\{y^{(i)}=a\}} - p(y^{(i)}=a|x^{(i)},\theta) \right] \\
+&amp;= - \frac {1} {m} \sum_{i=1}^{m} x_b^{(i)} \left[ 1_{\{y^{(i)}=a\}} - p(y^{(i)}=a|x^{(i)},\theta) \right]
 &amp;&amp; \text{(the indicator $1_{\{y{i}=k\}}=1$ for exactly once)} \\
 \end{align} \\
 \text{Vectorized form and change a to k: }
 \frac {\partial J_{\theta(X)}} {\partial \theta_{k}} =
-- \frac {1} {m} \sum_{i=1}^{m} x^{(i)} \left[ 1_{y^{(i)}=k} - p(y^{(i)}=k|x^{(i)},\theta) \right]
+- \frac {1} {m} \sum_{i=1}^{m} x^{(i)} \left[ 1_{\{y^{(i)}=k\}} - p(y^{(i)}=k|x^{(i)},\theta) \right]
 \]</span></p>
 <h3 id="property-of-softmax-regression-model-over-parameterization">Property of softmax regression model: over-parameterization</h3>
 <p><span class="math display">\[
@@ -158,24 +158,26 @@ e^{\theta_K^T x^{(i)}}
 \end{pmatrix}
 \end{align}
 \]</span></p>
-<h3 id="relation-with-logistic-regression">Relation with logistic regression</h3>
-<h5 id="proof-of-logistic-regression-loss-function-and-gradient">Proof of logistic regression loss function and gradient</h5>
-<p>Use softmax regression when classes are mutually exclusive.<br>
+<h3 id="relationship-to-logistic-regression">Relationship to logistic regression</h3>
+<p>When <span class="math inline">\(K=2\)</span>, softmax regression reduces to logistic regression.<br>
+Use softmax regression when classes are mutually exclusive.<br>
 Use <span class="math inline">\(K\)</span> one-vs-all logistic regression models when classes are not mutually exclusive.</p>
-<h3 id="to-do">To do</h3>
-<p>The loss function and gradient when <span class="math display">\[
-y^{(i)} \in Y = \left\{
-\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix},
-\begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix},
-\ldots,
-\begin{pmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}
-\right\}. \text{ Each matrix in Y is of length K}
-\]</span></p>
+<h3 id="python-implementation">Python implementation</h3>
+<p>Let <span class="math inline">\(y^{(i)}\)</span> be a column vector of identity matrix <span class="math inline">\(I_K\)</span>. <span class="math display">\[
+J_{\theta}(X) = - {1 \over m} \sum_{i=1}^m y^{(i)^T} \log {e^{\theta x^{(i)}} \over sum(e^{\theta x^{(i)}})} \\
+{\partial J_{\theta}(X) \over \partial \theta} = 
+\sum_{i=1}^m \left( {e^{\theta x^{(i)}} \over sum(e^{\theta x^{(i)}})} - y^{(i)} \right) x^{(i)^T} \\
+\text{where } \theta = \begin{pmatrix} - \theta_1^T - \\ - \theta_2^T - \\ \vdots \\ - \theta_K^T - \end{pmatrix}
+\]</span><br>
+When <span class="math inline">\(\theta_k^T x^{i}\)</span> is large, the exponential function <span class="math inline">\(e^{\theta_k^T x^{i}}\)</span> may overflow. To prevent this, because of the overparameterization property of the hypothesis, we can subtract the maximum of <span class="math inline">\(\theta_k^T x^{i}\)</span> from each <span class="math inline">\(\theta_k^T x^{i}\)</span> before computing the exponential.<br>
+<a href="https://github.com/temanchen/notebooks/blob/master/softmax_regression.ipynb" target="_blank" rel="external">Softmax regression notebook</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/08/softmax-regression/" data-id="ciz9j06ky00030yph811x4rty" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/08/softmax-regression/" data-id="cizgqhttg0004g8ph99g7zgar" class="article-share-link">Share</a>
+      
+        <a href="http://yoursite.com/2017/02/08/softmax-regression/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
@@ -206,6 +208,12 @@ y^{(i)} \in Y = \left\{
   
 </article>
 
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </section>
         
           <aside id="sidebar">
@@ -217,7 +225,7 @@ y^{(i)} \in Y = \left\{
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinational-Optimization/">Combinational Optimization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorial-Optimization/">Combinatorial Optimization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li></ul>
     </div>
   </div>
 
@@ -227,7 +235,7 @@ y^{(i)} \in Y = \left\{
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Combinational-Optimization/" style="font-size: 10px;">Combinational Optimization</a> <a href="/tags/Logistic-Regression/" style="font-size: 10px;">Logistic Regression</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a>
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Combinatorial-Optimization/" style="font-size: 10px;">Combinatorial Optimization</a> <a href="/tags/Logistic-Regression/" style="font-size: 10px;">Logistic Regression</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Neural-Network/" style="font-size: 10px;">Neural Network</a>
     </div>
   </div>
 
@@ -247,6 +255,10 @@ y^{(i)} \in Y = \left\{
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/02/21/Neural-Network/">Neural Network</a>
+          </li>
         
           <li>
             <a href="/2017/02/14/Traveling-Salesman-Problem/">Traveling Salesman Problem</a>
@@ -286,6 +298,20 @@ y^{(i)} \in Y = \left\{
   
 </nav>
     
+<script>
+  var disqus_shortname = 'githubblog-1';
+  
+  var disqus_url = 'http://yoursite.com/2017/02/08/softmax-regression/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 

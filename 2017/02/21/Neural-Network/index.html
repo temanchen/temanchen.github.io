@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Neural Network | Tianwen&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Notations
+
+
+
+Notation
+Meaning
+Dimension
+
+
+
+
+\(L\)
+No. of layers, including the input/output layers
+
+
+
+\(s_l\)
+No. of units in layer \(l\)
+
+
+
+\(g(\cdot)\)
+The activation function
+
+
+
+\(J_{\theta}(X)\)
+T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neural Network">
+<meta property="og:url" content="http://yoursite.com/2017/02/21/Neural-Network/index.html">
+<meta property="og:site_name" content="Tianwen's blog">
+<meta property="og:description" content="Notations
+
+
+
+Notation
+Meaning
+Dimension
+
+
+
+
+\(L\)
+No. of layers, including the input/output layers
+
+
+
+\(s_l\)
+No. of units in layer \(l\)
+
+
+
+\(g(\cdot)\)
+The activation function
+
+
+
+\(J_{\theta}(X)\)
+T">
+<meta property="og:updated_time" content="2017-02-22T12:51:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Neural Network">
+<meta name="twitter:description" content="Notations
+
+
+
+Notation
+Meaning
+Dimension
+
+
+
+
+\(L\)
+No. of layers, including the input/output layers
+
+
+
+\(s_l\)
+No. of units in layer \(l\)
+
+
+
+\(g(\cdot)\)
+The activation function
+
+
+
+\(J_{\theta}(X)\)
+T">
+  
+    <link rel="alternate" href="/atom.xml" title="Tianwen&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Tianwen&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Neural-Network" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/21/Neural-Network/" class="article-date">
+  <time datetime="2017-02-21T00:06:04.000Z" itemprop="datePublished">2017-02-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Neural Network
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="notations">Notations</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Notation</th>
+<th align="center">Meaning</th>
+<th align="center">Dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(L\)</span></td>
+<td align="center">No. of layers, including the input/output layers</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(s_l\)</span></td>
+<td align="center">No. of units in layer <span class="math inline">\(l\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(g(\cdot)\)</span></td>
+<td align="center">The activation function</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(J_{\theta}(X)\)</span></td>
+<td align="center">The cost function</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\((x, y)\)</span></td>
+<td align="center">A sample</td>
+<td align="center"><span class="math inline">\(s_1 \times 1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(a^{(l)}\)</span></td>
+<td align="center">The output of layer <span class="math inline">\(l\)</span></td>
+<td align="center"><span class="math inline">\(s_l \times 1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(z^{(l)}\)</span></td>
+<td align="center">The input of activation function in layer <span class="math inline">\(l+1\)</span></td>
+<td align="center"><span class="math inline">\(s_{l+1} \times 1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(b^{(l)}\)</span></td>
+<td align="center">The biased term in layer <span class="math inline">\(l\)</span></td>
+<td align="center"><span class="math inline">\(s_{l+1} \times 1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\theta^{(l)}\)</span></td>
+<td align="center">The weights from layer <span class="math inline">\(l\)</span> to layer <span class="math inline">\(l+1\)</span></td>
+<td align="center"><span class="math inline">\(s_{l+1} \times s_l\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\delta^{(l)}\)</span></td>
+<td align="center">The <span class="math inline">\(\delta\)</span> vector in layer <span class="math inline">\(l\)</span></td>
+<td align="center"><span class="math inline">\(s_l \times 1\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="derivation-of-the-delta-rule">Derivation of the delta rule</h3>
+<p>First, consider the relationship among <span class="math inline">\(a, z, \theta\)</span> <span class="math display">\[
+a^{(1)} = x \\
+z^{(l)} = \theta^{(l)} a^{(l)} + b^{(l)} \text{, for } 1 \leq l \leq L-1 \\
+a^{(l+1)} = g(z^{(l)}) \text{, for } 1 \leq l \leq L-1 \\
+h_\theta(x) = a^{(L)} \\
+\]</span> To update the weights, we need to compute the gradient <span class="math display">\[
+\begin{align}
+{\partial J_{\theta}(X) \over \partial \theta_{ji}^{(l)}} &amp;= {\partial J_{\theta}(X) \over \partial a_j^{(l+1)}}
+{\partial a_j^{(l+1)} \over \partial z_j^{(l)}} {\partial z_j^{(l)} \over \partial \theta_{ji}^{(l)}} \\
+&amp;= {\partial J_{\theta}(X) \over \partial a_j^{(l+1)}} {\partial a_j^{(l+1)} \over \partial z_j^{(l)}} a_i^{(l)}
+\end{align} \\
+\text{Define } \delta_j^{(l)} =
+{\partial J_{\theta}(X) \over \partial a_j^{(l)}} {\partial a_j^{(l)} \over \partial z_j^{(l-1)}} \\
+\text{Then } {\partial J_{\theta}(X) \over \partial \theta_{ji}^{(l)}} = \delta_j^{(l+1)} a_i^{(l)} \\
+\]</span></p>
+<h5 id="the-recursive-relationship-of-deltal">The recursive relationship of <span class="math inline">\(\delta^{(l)}\)</span></h5>
+<p><span class="math display">\[
+\text{When } 2 \leq l \leq L-1 \\
+\begin{align}
+\delta_j^{(l)} &amp;= {\partial J_{\theta}(X) \over \partial a_j^{(l)}} {\partial a_j^{(l)} \over \partial z_j^{(l-1)}} \\
+&amp;= \left( \sum_{k=1}^{s_{l+1}} {\partial J_{\theta}(X) \over \partial a_k^{(l+1)}}
+{\partial a_k^{(l+1)} \over \partial a_j^{(l)}} \right) {\partial a_j^{(l)} \over \partial z_j^{(l-1)}}
+&amp;&amp; \text{$J$ depends on $a_j^{(l)}$ through $a_k^{(l+1)}, 1 \leq k \leq s_{l+1}$} \\
+&amp;= \left( \sum_{k=1}^{s_{l+1}} {\partial J_{\theta}(X) \over \partial a_k^{(l+1)}}
+{\partial a_k^{(l+1)} \over \partial z_k^{(l)}} {\partial z_k^{(l)} \over \partial a_j^{(l)}} \right) {\partial a_j^{(l)} \over \partial z_j^{(l-1)}} \\
+&amp;= \left( \sum_{k=1}^{s_{l+1}} \delta_k^{(l+1)} \theta_{kj}^{(l)} \right) {\partial a_j^{(l)} \over \partial z_j^{(l-1)}}
+&amp;&amp; \text{ ${\partial z_k^{(l)} \over \partial a_j^{(l)}} = \theta_{kj}^{(l)}$ }
+\end{align}
+\]</span></p>
+<p>Thus, the gradient in vector form is as follows <span class="math display">\[
+{\partial J_{\theta}(X) \over \partial \theta^{(l)}} = \delta^{(l+1)} a^{(l)T} \\
+\text{where, } \\
+\delta^{(L)} = {\partial J_{\theta}(X) \over \partial a^{(L)}} \cdot {\partial a^{(L)} \over \partial z^{(L-1)}} \\
+\delta^{(l)} = \left( \theta^{(l)T} \delta^{(l+1)} \right) \cdot {\partial a^{(l)} \over \partial z^{(l-1)}}
+\text{, for } 2 \leq l \leq L-1 \\
+\]</span></p>
+<p>Similarly, we can derive the gradient of the biased terms. (Or consider <span class="math inline">\(b_j^{(l)}\)</span> as <span class="math inline">\(\theta_{j0}^{(l)}\)</span>, and define <span class="math inline">\(a_0^{(l)} = 1\)</span>) <span class="math display">\[
+{\partial J_{\theta}(X) \over \partial b^{(l)}} = \delta^{(l+1)}
+\]</span></p>
+<h3 id="example">Example</h3>
+<p>Use entropy loss function and sigmoid activation function <span class="math display">\[
+J_{\theta}(X) = - {1 \over m} \sum_{i=1}^m \sum_{o=1}^{s_L} 
+[ y_o^{(i)} \log h_\theta(x^{(i)})_o + ( 1 - y_o^{(i)}) \log (1 - h_\theta(x^{(i)})_o) ] \\
+g(z) = {1 \over 1 + e^{-z}} \\
+\text{Then } \\
+\delta^{(L)} = (h_{\theta}(x^{(i)}) - y^{(i)}) \\
+\delta^{(l)} = \left( \theta^{(l)T} \delta^{(l+1)} \right) \cdot [a^{(l)} \cdot (1 - a^{(l)})]
+\text{, for } 2 \leq l \leq L-1
+\]</span></p>
+<h3 id="python-implementation">Python implementation</h3>
+<p><a href="https://github.com/temanchen/notebooks/blob/master/neural_network.ipynb" target="_blank" rel="external">Neural Network Notebook</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/21/Neural-Network/" data-id="cizgqj60o0000hpphdylzbaib" class="article-share-link">Share</a>
+      
+        <a href="http://yoursite.com/2017/02/21/Neural-Network/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/14/Traveling-Salesman-Problem/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Traveling Salesman Problem</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorial-Optimization/">Combinatorial Optimization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Combinatorial-Optimization/" style="font-size: 10px;">Combinatorial Optimization</a> <a href="/tags/Logistic-Regression/" style="font-size: 10px;">Logistic Regression</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Neural-Network/" style="font-size: 10px;">Neural Network</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/02/21/Neural-Network/">Neural Network</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/14/Traveling-Salesman-Problem/">Traveling Salesman Problem</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/08/softmax-regression/">Softmax Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/03/linear_regression/">Linear Regression</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Tianwen CHEN<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'githubblog-1';
+  
+  var disqus_url = 'http://yoursite.com/2017/02/21/Neural-Network/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  "HTML-CSS": {
+    styles: { ".MathJax_Display": { "overflow": "auto", "overflow-y": "hidden" } }
+  },
+  displayAlign: "left"
+});
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

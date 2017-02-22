@@ -21,7 +21,7 @@ Given a feature vector \(x\), predict a continuous value \(y\)
 \(h_{\theta}(x) = \theta^{T}x\)
 Note for each input \(x\), we add a biased term \(x_0=1\) for convenience.
 3.Cost">
-<meta property="og:updated_time" content="2017-02-14T13:46:48.000Z">
+<meta property="og:updated_time" content="2017-02-19T07:35:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linear Regression">
 <meta name="twitter:description" content="1.Problem
@@ -141,19 +141,21 @@ y^{(1)} \\ y^{(2)} \\ \vdots \\ y^{(m)}
 {1 \over m} X^T(X\theta - y) &amp;= 0 &amp;\Leftrightarrow \cr
 \theta &amp;= (X^TX)^{-1}X^Ty &amp;\Leftrightarrow \cr
 }
-\]</span> Note that if <span class="math inline">\(m \lt n\)</span> or there are some redundant features, then <span class="math inline">\(X^T X\)</span> is singular (non-invertible).<br>
-##### Proof:<br>
-First let’s define what is a redundant feature.<br>
+\]</span> Note that if <span class="math inline">\(m \lt n\)</span> or there are some redundant features, then <span class="math inline">\(X^T X\)</span> is singular (non-invertible).</p>
+<h5 id="proof">Proof:</h5>
+<p>First let’s define what is a redundant feature.<br>
 Left <span class="math inline">\(x_i\)</span> be a <span class="math inline">\(m \times 1\)</span> vector representing the <span class="math inline">\(i^{th}\)</span> feature. If <span class="math inline">\(x_i\)</span> is a linear combination of other features, then <span class="math inline">\(x_i\)</span> is a redundant feature.<br>
 If <span class="math inline">\(m \lt n\)</span>, since <span class="math inline">\(x_i \in R^m\)</span>, and there are <span class="math inline">\(n \gt m\)</span> of them, there must be some redundant features.<br>
 If there are some redundant features, use <strong><em>outer product expansion</em></strong> to expand <span class="math inline">\(X^T X\)</span> (let <span class="math inline">\(X = \begin{pmatrix} x_1 &amp; x_2 &amp; \ldots &amp; x_n \end{pmatrix}\)</span>). It is then easy to show that some row of <span class="math inline">\(X^TX\)</span> is a linear combination of other rows of <span class="math inline">\(X^T X,\)</span> which means <span class="math inline">\(X^T X\)</span> is singular.</p>
 <h3 id="python-implementation">6.Python implementation</h3>
-<p><a href="">Linear Regression Notebook</a></p>
+<p><a href="https://github.com/temanchen/notebooks/blob/master/linear_regression.ipynb" target="_blank" rel="external">Linear Regression Notebook</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/03/linear_regression/" data-id="ciz9j06kr00010yph1c0l0mrp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/03/linear_regression/" data-id="cizgqhtte0003g8ph0bsaxaru" class="article-share-link">Share</a>
+      
+        <a href="http://yoursite.com/2017/02/03/linear_regression/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -177,6 +179,12 @@ If there are some redundant features, use <strong><em>outer product expansion</e
   
 </article>
 
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </section>
         
           <aside id="sidebar">
@@ -188,7 +196,7 @@ If there are some redundant features, use <strong><em>outer product expansion</e
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinational-Optimization/">Combinational Optimization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorial-Optimization/">Combinatorial Optimization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li></ul>
     </div>
   </div>
 
@@ -198,7 +206,7 @@ If there are some redundant features, use <strong><em>outer product expansion</e
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Combinational-Optimization/" style="font-size: 10px;">Combinational Optimization</a> <a href="/tags/Logistic-Regression/" style="font-size: 10px;">Logistic Regression</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a>
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Combinatorial-Optimization/" style="font-size: 10px;">Combinatorial Optimization</a> <a href="/tags/Logistic-Regression/" style="font-size: 10px;">Logistic Regression</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Neural-Network/" style="font-size: 10px;">Neural Network</a>
     </div>
   </div>
 
@@ -218,6 +226,10 @@ If there are some redundant features, use <strong><em>outer product expansion</e
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/02/21/Neural-Network/">Neural Network</a>
+          </li>
         
           <li>
             <a href="/2017/02/14/Traveling-Salesman-Problem/">Traveling Salesman Problem</a>
@@ -257,6 +269,20 @@ If there are some redundant features, use <strong><em>outer product expansion</e
   
 </nav>
     
+<script>
+  var disqus_shortname = 'githubblog-1';
+  
+  var disqus_url = 'http://yoursite.com/2017/02/03/linear_regression/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
