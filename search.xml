@@ -1,89 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
   
-  <title>Tianwen&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tianwen's blog">
-<meta property="og:url" content="http://www.twchen.cc/index.html">
-<meta property="og:site_name" content="Tianwen's blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tianwen's blog">
-  
-    <link rel="alternate" href="/atom.xml" title="Tianwen&#39;s blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-
-</head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Tianwen&#39;s blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.twchen.cc"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-Neural-Network" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/21/Neural-Network/" class="article-date">
-  <time datetime="2017-02-21T00:06:04.000Z" itemprop="datePublished">2017-02-21</time>
-</a>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/21/Neural-Network/">Neural Network</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="notations">Notations</h3>
+    <entry>
+      <title><![CDATA[Neural Network]]></title>
+      <url>/2017/02/21/Neural-Network/</url>
+      <content type="html"><![CDATA[<h3 id="notations">Notations</h3>
 <table>
 <thead>
 <tr class="header">
@@ -197,47 +119,23 @@ g(z) = {1 \over 1 + e^{-z}} \\
 \]</span></p>
 <h3 id="python-implementation">Python implementation</h3>
 <p><a href="https://github.com/temanchen/notebooks/blob/master/neural_network.ipynb" target="_blank" rel="external">Neural Network Notebook</a></p>
-
+]]></content>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.twchen.cc/2017/02/21/Neural-Network/" data-id="cj6uw2ht70001cuphp04sisba" class="article-share-link">Share</a>
-      
-        <a href="http://www.twchen.cc/2017/02/21/Neural-Network/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Traveling-Salesman-Problem" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/14/Traveling-Salesman-Problem/" class="article-date">
-  <time datetime="2017-02-14T03:12:01.000Z" itemprop="datePublished">2017-02-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/14/Traveling-Salesman-Problem/">Traveling Salesman Problem</a>
-    </h1>
-  
-
-      </header>
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> Neural Network </tag>
+            
+        </tags>
+        
+    </entry>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="problem-metric-tsp-without-repetitions">Problem (Metric TSP without repetitions)</h3>
+    <entry>
+      <title><![CDATA[Traveling Salesman Problem]]></title>
+      <url>/2017/02/14/Traveling-Salesman-Problem/</url>
+      <content type="html"><![CDATA[<h3 id="problem-metric-tsp-without-repetitions">Problem (Metric TSP without repetitions)</h3>
 <p>Input: a complete, weighted graph <span class="math inline">\(G = (V, w)\)</span>. The weights are non-negative and satisfy the triangle inequality.<br>
 Output: a minimum cost cycle that visits each vertex exactly once.</p>
 <h3 id="approximation-algorithm">2-approximation Algorithm</h3>
@@ -295,47 +193,23 @@ cost(T_{h}) \leq cost(T_{e}) \;\; \text{(shortcutting will not increse the cost)
 \leq {1 \over 2} cost(T_{opt}) + cost(T_{opt})
 \]</span></li>
 </ol>
-
+]]></content>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.twchen.cc/2017/02/14/Traveling-Salesman-Problem/" data-id="cj6uw2hta0002cuphvr3ly36r" class="article-share-link">Share</a>
-      
-        <a href="http://www.twchen.cc/2017/02/14/Traveling-Salesman-Problem/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Combinatorial-Optimization/">Combinatorial Optimization</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-softmax-regression" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/08/softmax-regression/" class="article-date">
-  <time datetime="2017-02-08T06:48:08.000Z" itemprop="datePublished">2017-02-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/08/softmax-regression/">Softmax Regression</a>
-    </h1>
-  
-
-      </header>
+        <tags>
+            
+            <tag> Combinatorial Optimization </tag>
+            
+            <tag> Algorithm </tag>
+            
+        </tags>
+        
+    </entry>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="what-is-softmax-regression">What is Softmax Regression</h3>
+    <entry>
+      <title><![CDATA[Softmax Regression]]></title>
+      <url>/2017/02/08/softmax-regression/</url>
+      <content type="html"><![CDATA[<h3 id="what-is-softmax-regression">What is Softmax Regression</h3>
 <p>Softmax regression is a generalization of logistic regression. It is used for <strong>multi-class classification</strong> under the assumption that the classes are <strong>independent</strong>. For each example <span class="math inline">\((x^{(i)},y^{(i)}),\,y^{(i)} \in \{1, 2, ..., K\}\)</span>, the model estimates <span class="math inline">\(p(y^{(i)}=k|x^{(i)},\theta)\)</span>.</p>
 <h3 id="hypothesis">Hypothesis</h3>
 <p><span class="math display">\[
@@ -418,47 +292,23 @@ J_{\theta}(X) = - {1 \over m} \sum_{i=1}^m y^{(i)^T} \log {e^{\theta x^{(i)}} \o
 \]</span><br>
 When <span class="math inline">\(\theta_k^T x^{i}\)</span> is large, the exponential function <span class="math inline">\(e^{\theta_k^T x^{i}}\)</span> may overflow. To prevent this, because of the overparameterization property of the hypothesis, we can subtract the maximum of <span class="math inline">\(\theta_k^T x^{i}\)</span> from each <span class="math inline">\(\theta_k^T x^{i}\)</span> before computing the exponential.<br>
 <a href="https://github.com/temanchen/notebooks/blob/master/softmax_regression.ipynb" target="_blank" rel="external">Softmax regression notebook</a></p>
-
+]]></content>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.twchen.cc/2017/02/08/softmax-regression/" data-id="cj6uw2htf0004cuph2qey7ypl" class="article-share-link">Share</a>
-      
-        <a href="http://www.twchen.cc/2017/02/08/softmax-regression/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linear_regression" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/03/linear_regression/" class="article-date">
-  <time datetime="2017-02-03T09:45:01.000Z" itemprop="datePublished">2017-02-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/03/linear_regression/">Linear Regression</a>
-    </h1>
-  
-
-      </header>
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> Logistic Regression </tag>
+            
+        </tags>
+        
+    </entry>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="problem">1.Problem</h3>
+    <entry>
+      <title><![CDATA[Linear Regression]]></title>
+      <url>/2017/02/03/linear_regression/</url>
+      <content type="html"><![CDATA[<h3 id="problem">1.Problem</h3>
 <p>Given a feature vector <span class="math inline">\(x\)</span>, predict a continuous value <span class="math inline">\(y\)</span></p>
 <h3 id="hypothesis">2.Hypothesis</h3>
 <p><span class="math inline">\(h_{\theta}(x) = \theta^{T}x\)</span><br>
@@ -507,130 +357,11 @@ If <span class="math inline">\(m \lt n\)</span>, since <span class="math inline"
 If there are some redundant features, use <strong><em>outer product expansion</em></strong> to expand <span class="math inline">\(X^T X\)</span> (let <span class="math inline">\(X = \begin{pmatrix} x_1 &amp; x_2 &amp; \ldots &amp; x_n \end{pmatrix}\)</span>). It is then easy to show that some row of <span class="math inline">\(X^TX\)</span> is a linear combination of other rows of <span class="math inline">\(X^T X,\)</span> which means <span class="math inline">\(X^T X\)</span> is singular.</p>
 <h3 id="python-implementation">6.Python implementation</h3>
 <p><a href="https://github.com/temanchen/notebooks/blob/master/linear_regression.ipynb" target="_blank" rel="external">Linear Regression Notebook</a></p>
-
+]]></content>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.twchen.cc/2017/02/03/linear_regression/" data-id="cj6uw2ht00000cuph795v8y5a" class="article-share-link">Share</a>
-      
-        <a href="http://www.twchen.cc/2017/02/03/linear_regression/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-</section>
         
-          <aside id="sidebar">
-  
+    </entry>
     
-
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Combinatorial-Optimization/">Combinatorial Optimization</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logistic-Regression/">Logistic Regression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li></ul>
-    </div>
-  </div>
-
-
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Combinatorial-Optimization/" style="font-size: 10px;">Combinatorial Optimization</a> <a href="/tags/Logistic-Regression/" style="font-size: 10px;">Logistic Regression</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Neural-Network/" style="font-size: 10px;">Neural Network</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/02/21/Neural-Network/">Neural Network</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/14/Traveling-Salesman-Problem/">Traveling Salesman Problem</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/08/softmax-regression/">Softmax Regression</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/03/linear_regression/">Linear Regression</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 Tianwen CHEN<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-<script>
-  var disqus_shortname = 'twchen';
-  
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-  </div>
-</body>
-</html>
+</search>
